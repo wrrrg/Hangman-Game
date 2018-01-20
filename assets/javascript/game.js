@@ -30,21 +30,28 @@
 // };
 
 
-var remainingGuesses = 10;
+var remainingGuesses = 2;
 var answerKey = '';
 var answerKeyArray = [];
 var userGuessArray = [];
-var blankKey = [];
-// var answerBlankSpaces = [];
-// var guessedLetters = [];
+var guessString = ''
+var victory = false;
+var userString = '';
 
 var wordBank = ['trout', 'salmon', 'catfish', 'barramundi', 'tilapia', 'marlin'];
+
 
 function pickAnswer() {
   var total = wordBank.length;
   answerKey = wordBank[Math.floor(Math.random() * total)];
 };
-
+// 
+// function reset() {
+//   answerKey = pickAnswer();
+//   answerKeyArray = makeAnswerKey();
+//   userGuessArray = makeUserGuessArray();
+//   victory = false;
+// };
 
 
 // Create the answer key and userGuessArray
@@ -56,10 +63,31 @@ function makeAnswerKey(string) {
 
 function makeUserGuessArray() {
   for (var i = 0; i < answerKeyArray.length; i++) {
-    userGuessArray.unshift(' _ ');
+    userGuessArray.unshift('_');
   };
   return userGuessArray;
 };
+
+// The HTML friendly version
+
+function displayUserArray () {
+  var guessString = userGuessArray.join();
+  document.getElementById("answerSpaces").textContent = guessString;
+};
+
+
+
+// Check for victory
+function checkVictory(){
+  if(victory) {
+    alert("You won!");
+  // } else if (!victory && remainingGuesses > 0) {
+  //   alert("keep trying!");
+  } else if (!victory && remainingGuesses <= 0) {
+    alert("you've lost");
+  }
+};
+
 
 // Guess Logic
 
@@ -69,27 +97,49 @@ function guess(key) {
     if (key === answerKeyArray[i]) {
       userGuessArray[i] = key;
       correct = true;
+      alert("good guess! That letter is in the word!");
     }};
 
     if(!correct){
-      remainingGuesses -= 1;
-    };
-      console.log(userGuessArray.join());
-      console.log("remaining guesses: " + remainingGuesses);
+      if(remainingGuesses >= 1) {
+        remainingGuesses -= 1;
+        alert("Not quite...");
+    }};
+
+      // var guessesForHTML = userGuessArray.join();
+      // // console.log(guessesForHTML);
+      // document.getElementById("answerSpaces").textContent = guessesForHTML;
+      // console.log("remaining guesses: " + remainingGuesses);
+
+      checkVictory();
 };
 
+document.getElementById("newGameButton").addEventListener("click", function(){
 
 
-pickAnswer();
-makeAnswerKey(answerKey);
-makeUserGuessArray();
-console.log(userGuessArray);
-console.log(remainingGuesses);
 
-if (answerKeyArray === userGuessArray) {
-  console.log("you win!");
-  return "you win";
-};
+    pickAnswer();
+    makeAnswerKey(answerKey);
+    makeUserGuessArray();
+    displayUserArray();
+    console.log(userGuessArray);
+    console.log("you have " + remainingGuesses + " guesses left.");
+  });
+
+// newGame(){
+//   pickAnswer();
+//   makeAnswerKey(answerKey);
+//   makeUserGuessArray();
+//   console.log(userGuessArray);
+//   console.log("you have " + remainingGuesses + " guesses left.");
+// }
+
+// pickAnswer();
+// makeAnswerKey(answerKey);
+// makeUserGuessArray();
+// console.log(userGuessArray);
+// console.log("you have " + remainingGuesses + " guesses left.");
+
 
 
 
