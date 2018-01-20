@@ -45,7 +45,7 @@ function pickAnswer() {
   var total = wordBank.length;
   answerKey = wordBank[Math.floor(Math.random() * total)];
 };
-// 
+//
 // function reset() {
 //   answerKey = pickAnswer();
 //   answerKeyArray = makeAnswerKey();
@@ -106,15 +106,15 @@ function guess(key) {
         alert("Not quite...");
     }};
 
-      // var guessesForHTML = userGuessArray.join();
-      // // console.log(guessesForHTML);
-      // document.getElementById("answerSpaces").textContent = guessesForHTML;
-      // console.log("remaining guesses: " + remainingGuesses);
+      var guessesForHTML = userGuessArray.join();
+      // console.log(guessesForHTML);
+      document.getElementById("answerSpaces").textContent = guessesForHTML;
+      console.log("remaining guesses: " + remainingGuesses);
 
       checkVictory();
 };
 
-document.getElementById("newGameButton").addEventListener("click", function(){
+// document.getElementById("newGameButton").addEventListener("click", function(){
 
 
 
@@ -124,7 +124,7 @@ document.getElementById("newGameButton").addEventListener("click", function(){
     displayUserArray();
     console.log(userGuessArray);
     console.log("you have " + remainingGuesses + " guesses left.");
-  });
+
 
 // newGame(){
 //   pickAnswer();
