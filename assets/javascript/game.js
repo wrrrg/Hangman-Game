@@ -30,12 +30,15 @@
 // };
 
 
-var remainingGuesses = 2;
+var remainingGuesses = 10;
 var answerKey = '';
 var answerKeyArray = [];
+var guessKey = '';
 var userGuessArray = [];
 var guessString = ''
+var alreadyGuessedArr = ['Already Guessed: '];
 var victory = false;
+var defeat = false;
 var userString = '';
 
 var wordBank = ['trout', 'salmon', 'catfish', 'barramundi', 'tilapia', 'marlin'];
@@ -71,20 +74,18 @@ function makeUserGuessArray() {
 // The HTML friendly version
 
 function displayUserArray () {
-  var guessString = userGuessArray.join();
+  var guessString = userGuessArray.join(' ');
   document.getElementById("answerSpaces").textContent = guessString;
 };
-
-
 
 // Check for victory
 function checkVictory(){
   if(victory) {
-    alert("You won!");
-  // } else if (!victory && remainingGuesses > 0) {
-  //   alert("keep trying!");
+    document.getElementById("userMsg").textContent = ("You won!");
+
   } else if (!victory && remainingGuesses <= 0) {
-    alert("you've lost");
+    document.getElementById("userMsg").textContent = ("you've lost");
+    defeat = true;
   }
 };
 
@@ -97,22 +98,30 @@ function guess(key) {
     if (key === answerKeyArray[i]) {
       userGuessArray[i] = key;
       correct = true;
-      alert("good guess! That letter is in the word!");
+      document.getElementById("userMsg").textContent = ("good guess! That letter is in the word!");
     }};
 
     if(!correct){
       if(remainingGuesses >= 1) {
         remainingGuesses -= 1;
-        alert("Not quite...");
+        document.getElementById("guessesLeft").textContent = remainingGuesses;
+        document.getElementById("userMsg").textContent = ("Not quite...");
     }};
 
       var guessesForHTML = userGuessArray.join();
       // console.log(guessesForHTML);
       document.getElementById("answerSpaces").textContent = guessesForHTML;
       console.log("remaining guesses: " + remainingGuesses);
-
       checkVictory();
 };
+
+document.getElementById("guessButton").addEventListener("click", function() {
+  guessKey = document.getElementById('guessInput').value;
+  guess(guessKey);
+  alreadyGuessedArr.push(guessKey);
+  document.getElementById("guessedAlready").textContent = alreadyGuessedArr.join(' ');
+});
+
 
 // document.getElementById("newGameButton").addEventListener("click", function(){
 
@@ -122,6 +131,7 @@ function guess(key) {
     makeAnswerKey(answerKey);
     makeUserGuessArray();
     displayUserArray();
+    document.getElementById("guessesLeft").textContent = remainingGuesses;
     console.log(userGuessArray);
     console.log("you have " + remainingGuesses + " guesses left.");
 
