@@ -1,0 +1,24 @@
+body {
+  background-color: black;
+  margin: 0 auto;
+  color: yellow;
+
+}
+
+.game-main {
+  width: 960px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#title {
+  text-align: center;
+  font-size: 36px;
+  color: yellow;
+}
+
+#answerSpaces {
+  color: orange;
+  font-style: oblique;
+
+}
