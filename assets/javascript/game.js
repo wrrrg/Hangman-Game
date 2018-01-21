@@ -9,7 +9,7 @@
 // we also need a win counter, as well as a loop looking for win/lose to trip this
 
 
-
+var gameOn = false;
 var remainingGuesses = 10;
 var answerKey = '';
 var answerKeyArray = [];
@@ -23,6 +23,8 @@ var guessedBefore = '';
 
 var winCount = 0;
 var lossCount = 0;
+// var winStr = winCount.toString();
+// var lossStr = lossCount.toString();
 
 var wordBank = ['trout', 'salmon', 'catfish', 'barramundi', 'tilapia', 'marlin'];
 
@@ -31,14 +33,6 @@ function pickAnswer() {
   var total = wordBank.length;
   answerKey = wordBank[Math.floor(Math.random() * total)];
 };
-//
-// function reset() {
-//   answerKey = pickAnswer();
-//   answerKeyArray = makeAnswerKey();
-//   userGuessArray = makeUserGuessArray();
-//   victory = false;
-// };
-
 
 // Create the answer key and userGuessArray
 
@@ -74,25 +68,28 @@ function arraysEqual(arr1, arr2) {
     }
     return victory = true;
 };
-// function checkVictory(arr) {
-//   if(arr === answerKeyArray) {
-//   victory = true;
-// };
-//   console.log(victory);
-//   return victory;
-// };
+
 // Victory Messages
 function victoryMessages(){
   if(victory) {
     document.getElementById("userMsg").textContent = ("You won!");
     winCount += 1;
+    updateScore();
+
 }
 if (!victory && remainingGuesses < 1) {
   document.getElementById("userMsg").textContent = ("you've lost");
   lossCount += 1;
+  updateScore();
+
   defeat = true;
 
 }};
+
+function updateScore() {
+  document.getElementById("wins").textContent = (winCount);
+  document.getElementById("losses").textContent = (lossCount);
+}
 
 function checkVictory() {
   arraysEqual(userGuessArray,answerKeyArray);
@@ -169,7 +166,7 @@ document.getElementById("newGameButton").addEventListener("click", function() {
   reset();
 });
 
-//
+
 
 
 function init(){
@@ -189,6 +186,7 @@ function init(){
 
   function reset(){
     init();
+    updateScore();
   };
 
 

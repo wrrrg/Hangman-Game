@@ -1,8 +1,25 @@
 body {
-  background-color: black;
+  /* background-color: black; */
+  background-image: url(../images/background.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
   margin: 0 auto;
-  color: yellow;
+  color: gray;
 
+}
+
+#fisherman {
+  float: right;
+  width: 300px;
+  opacity: .8;
+  /* position: fixed;
+  top: 0;
+  left: 200px; */
+}
+
+.scoreCount {
+  margin: 0 auto;
+  width: 960px;
 }
 
 .game-main {
