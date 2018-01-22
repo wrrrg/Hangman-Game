@@ -122,6 +122,7 @@ function guess(key) {
       userGuessArray[i] = key;
       correct = true;
       document.getElementById("userMsg").textContent = ("good guess! That letter is in the word!");
+      salmon.style.opacity = "1";
       moveFish();
     }};
 
@@ -273,6 +274,7 @@ function init(){
     alreadyGuessedArr = [];
     salmonX = 0;
     salmon.style.transform = "none";
+    salmon.style.opacity = "0";
     // salmon.style.left = 10%;
     // resetVars();
     pickAnswer();
