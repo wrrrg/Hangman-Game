@@ -24,6 +24,7 @@ var victory = false;
 var defeat = false;
 var userString = '';
 var guessedBefore = '';
+var salmon = document.getElementById("salmon");
 
 
 var winCount = 0;
@@ -121,6 +122,7 @@ function guess(key) {
       userGuessArray[i] = key;
       correct = true;
       document.getElementById("userMsg").textContent = ("good guess! That letter is in the word!");
+      moveFish();
     }};
 
     if(!correct){
@@ -269,6 +271,9 @@ function init(){
     defeat = false;
     remainingGuesses = 10;
     alreadyGuessedArr = [];
+    salmonX = 0;
+    salmon.style.transform = "none";
+    // salmon.style.left = 10%;
     // resetVars();
     pickAnswer();
     makeAnswerKey(answerKey);
@@ -290,6 +295,14 @@ function init(){
 hideMainScreen();
 
 
+var salmonX = 0;
+
+function moveFish(){
+  salmonX += 50;
+  salmon.style.position - "fixed";
+  salmon.style.transform = "translateX(" + salmonX + "px)";
+
+};
 
 
 
