@@ -8,13 +8,15 @@
   </head>
   <body>
 
-    <!-- <div id="startScreen">
+    <div id="startScreen" class="startScreenClass">
         <h1>Press any key to start fishin'</h1>
-    </div> -->
-    <div class="container">
+    </div>
 
 
-    <h1 id="title">Reel him in!</h1>
+    <div id="container">
+
+
+    <h1 id="title">Go Fish!</h1>
 
     <div class="game-main">
 
@@ -22,7 +24,7 @@
 
       <!-- <h2>Guess the fish!</h2> -->
 
-       <h3>Try to spell the name of the fish you've got on the line. Type your guesses in the space below to try to reel in your catch.</h3>
+       <h3>Guess the fish name to reel him in.</h3>
 
 
       <!-- <input type="text" name="" value="" id="guessInput"></input> <button id="guessButton">Guess!</button>  -->
@@ -32,25 +34,29 @@
       <input type="text" name="" value="" id="guessInput" onchange="guessCheck()"></input>
 
 
-      <p>You have <span id="guessesLeft"></span> guesses left.</p>
+      <div class="guessBox">
+        <p>You have <span id="guessesLeft"></span> guesses left.</p>
 
-      <p>Already Guessed: <span id="guessedAlready">  </span>
+        <p>Already Guessed: <span id="guessedAlready">  </span>
       </div>
 
 
+            <div id="scoreCount" class="scoreBox">
+            <h3><span id="userMsg">Good Luck!</span></h3>
+
+
+
+
+          <p>Wins: <span id="wins">0</span>   ---   Losses: <span id="losses">0</span></p>
+              </div>
+
       <img src="assets/images/fishermanpng.png" id="fisherman" alt="">
-
-      <div class="scoreCount">
-      <h3><span id="userMsg">Good Luck!</span></h3>
-
       <button type="button" name="button" id="newGameButton">New game!</button>
-
-
-    <p>Wins: <span id="wins">0</span>   ---   Losses: <span id="losses">0</span></p>
-        </div>
+<img src="assets/images/food-salmonpng.png" alt="" id="salmon">
+            </div>
       <script type="text/javascript" src="assets/javascript/game.js"></script>
 
-          </div>
+
 
   </body>
 </html>

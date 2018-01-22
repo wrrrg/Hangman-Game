@@ -7,57 +7,119 @@ html {
 
 body {
   /* background-color: black; */
-
+  width: 100%;
   margin: 0 auto;
   color: gray;
 
 }
 
-.container {
-  width: 100%;
-  max-width: 980px;
-  margin: 0 auto;
-  display: inherit;
-
-}
-
-.startScreen {
-  width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  height: 2000px;
-  z-index: 10;
-  background-color: red;
-}
-
-.startScreen h1 {
-  color: white;
-  margin: 0 auto;
-}
+/* Hide and Show classes */
 
 .hidden {
-  display: none;
+  opacity: 0;
+  transition: opacity.5s ease-out;
 }
+
+.show {
+  opacity: 1;
+  transition: opacity .5s ease-out;
+}
+
+/* Main Game Container CSS */
+
+#container {
+  width: 100%;
+  max-width: 980px;
+  height: 900px;
+  margin: 0 auto;
+  position: relative;
+
+}
+
+/* Splash Screen Stuff */
+
+.startScreenClass {
+  width: 100%;
+  max-width: 980px;
+
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+
+  /* height: 2000px; */
+
+}
+
+.startScreenClass h1 {
+  color: orange;
+  font-size: 48px;
+  position: relative;
+  /* top: 50%;
+  left: 50%; */
+  text-align: center;
+}
+
+/* Guess box things */
+
+.guessBox {
+  float: left;
+  background-color: rgba(23,95,196,.3);
+  color: white;
+  width: 30%;
+}
+
+.scoreBox {
+  float: right;
+  background-color: rgba(23,95,196,.3);
+  color: white;
+  width: 30%;
+}
+
+#guessInput {
+  padding: 20px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+
 
 #fisherman {
-  float: right;
+  /* float: right; */
   width: 300px;
-  /* position: fixed;
-  bottom: 300px; */
-  opacity: .8;
-  /* position: fixed;
-  top: 0;
-  left: 200px; */
+
+  position: fixed;
+  top: 500px;
+  right: 150px;
 }
 
-.scoreCount {
-  /* margin: 0 auto; */
-  /* width: 400px; */
-  color: white;
-  /* position: absolute;
-  top: 10px;
-  left: 30%; */
+#salmon {
+
+  width: 100px;
+  position: fixed;
+  bottom: 300px;
+  left: 10%;
 }
+
+#newGameButton {
+  background-color: rgb(97, 133, 191);
+  color: white;
+  position: fixed;
+  bottom: 230px;
+  right: 220px;
+  margin: 0 auto;
+  border-radius: 50%;
+  text-transform: capitalize;
+  padding: 10px;
+  opacity: .8;
+}
+
+/* #scoreCount {
+  margin: 0 auto;
+  /* width: 200px; */
+  /* color: white;
+  float: right; */
+
+
 
 .game-main {
   width: 960px;
@@ -73,6 +135,6 @@ body {
 
 #answerSpaces {
   color: orange;
-  font-style: oblique;
+  /* font-style: oblique; */
 
 }

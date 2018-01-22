@@ -12,7 +12,8 @@
 // ALL THATS LEFT - put in the fish, get him moving, get the hide/show going
 
 
-var gameOn = false;
+var gameStarted = false;
+
 var remainingGuesses = 10;
 var answerKey = '';
 var answerKeyArray = [];
@@ -24,6 +25,7 @@ var defeat = false;
 var userString = '';
 var guessedBefore = '';
 
+
 var winCount = 0;
 var lossCount = 0;
 // var winStr = winCount.toString();
@@ -31,6 +33,8 @@ var lossCount = 0;
 
 var wordBank = ['trout', 'salmon', 'catfish', 'barramundi', 'tilapia', 'marlin'];
 
+
+//Choose the answer
 
 function pickAnswer() {
   var total = wordBank.length;
@@ -188,6 +192,18 @@ document.addEventListener('input', function() {
   blankOutGuess();
 });
 
+// function startGame(){
+//   gameOn = true;
+//   document.getElementByTagName("body").style.display = 'block';
+// }
+//
+//
+// document.addEventListener("keydown", function() {
+//
+//   startGame();
+//   init();
+// });
+
 // document.onChange
 // document.getElementById("guessInput").addEventListener("change", function(){
 //   guessKey = String.fromCharCode(event.keyCode).toLowerCase();
@@ -213,6 +229,39 @@ document.getElementById("newGameButton").addEventListener("click", function() {
 //     document.getElementById("guessedAlready").textContent = alreadyGuessedArr.join(' ');
 // }};
 
+// var gameSwitch = document.getElementsByClassName("container");
+
+function hideMainScreen(){
+  element = document.getElementById("container");
+  element.classList.add('hidden');
+};
+
+function hideTitleScreen(){
+  element = document.getElementById("startScreen");
+  element.classList.add('hidden');
+};
+
+function showMainScreen(){
+  element = document.getElementById("container");
+  element.classList.add('show');
+};
+
+function moveFish(){
+  element = document.getElementById("Salmon");
+  element.style.left += 1
+}
+
+
+// Start the game
+document.addEventListener("keyup", ev => {
+  if (!gameStarted) {
+      gameStarted = true;
+      hideTitleScreen();
+      showMainScreen();
+      init();
+  }
+});
+
 
 
 function init(){
@@ -231,12 +280,16 @@ function init(){
   };
 
   function reset(){
+
     init();
     updateScore();
   };
 
+  // init();
 
-init();
+hideMainScreen();
+
+
 
 
 
