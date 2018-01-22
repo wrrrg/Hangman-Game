@@ -14,7 +14,7 @@
 
 var gameStarted = false;
 
-var remainingGuesses = 10;
+var remainingGuesses = 6;
 var answerKey = '';
 var answerKeyArray = [];
 var guessKey = '';
@@ -25,6 +25,7 @@ var defeat = false;
 var userString = '';
 var guessedBefore = '';
 var salmon = document.getElementById("salmon");
+var victorySound = new Audio('assets/sounds/victory_sound.mp3');
 
 
 var winCount = 0;
@@ -33,6 +34,8 @@ var lossCount = 0;
 // var lossStr = lossCount.toString();
 
 var wordBank = ['trout', 'salmon', 'catfish', 'barramundi', 'tilapia', 'marlin'];
+
+
 
 
 //Choose the answer
@@ -102,8 +105,10 @@ function checkVictory() {
   arraysEqual(userGuessArray,answerKeyArray);
   victoryMessages();
   if(victory){
+    victorySound.play();
     reset();
     document.getElementById("userMsg").textContent = 'Great Catch! You got one!';
+
   };
   if(defeat){
     reset();
@@ -270,7 +275,7 @@ document.addEventListener("keyup", ev => {
 function init(){
     victory = false;
     defeat = false;
-    remainingGuesses = 10;
+    remainingGuesses = 6;
     alreadyGuessedArr = [];
     salmonX = 0;
     salmon.style.transform = "none";

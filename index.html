@@ -3,6 +3,8 @@
   <head>
     <meta charset="utf-8">
     <title>Hangman Fishin'</title>
+    <link href="https://fonts.googleapis.com/css?family=Alegreya:500,700,800i" rel="stylesheet">
+
     <link rel="stylesheet" href="assets/css/style.css">
 
   </head>
@@ -15,46 +17,41 @@
 
     <div id="container">
 
-
-    <h1 id="title">Go Fish!</h1>
-
     <div class="game-main">
-
-
-
+       <h1 id="title">Go Fish!</h1>
       <!-- <h2>Guess the fish!</h2> -->
-
-       <h3>Guess the fish name to reel him in.</h3>
-
-
-      <!-- <input type="text" name="" value="" id="guessInput"></input> <button id="guessButton">Guess!</button>  -->
-
-      <h1 id="answerSpaces"></h1>
-
-      <input type="text" name="" value="" id="guessInput" onchange="guessCheck()"></input>
+      <div id="inputStyle">
 
 
-      <div class="guessBox">
-        <p>You have <span id="guessesLeft"></span> guesses left.</p>
+         <h3>Guess the fish name to reel him in.</h3>
+        <!-- <input type="text" name="" value="" id="guessInput"></input> <button id="guessButton">Guess!</button>  -->
+         <h1 id="answerSpaces"></h1>
 
-        <p>Already Guessed: <span id="guessedAlready">  </span>
+         <input type="text" name="" value="" id="guessInput" onchange="guessCheck()"></input>
       </div>
 
+<!-- Guesses and previously guessed Letters -->
+        <div class="guessBox">
+          <p>You have <span id="guessesLeft"></span> guesses left.</p>
 
-            <div id="scoreCount" class="scoreBox">
+          <p>Already Guessed: <span id="guessedAlready">  </span>
+        </div>
+
+<!-- Score and Message to User -->
+        <div id="scoreCount" class="scoreBox">
             <h3><span id="userMsg">Good Luck!</span></h3>
-
-
-
-
-          <p>Wins: <span id="wins">0</span>   ---   Losses: <span id="losses">0</span></p>
-              </div>
+            <p>Wins: <span id="wins">0</span>   ---   Losses: <span id="losses">0</span></p>
+        </div>
 
       <img src="assets/images/fishermanpng.png" id="fisherman" alt="">
-      <button type="button" name="button" id="newGameButton">New game!</button>
-<img src="assets/images/food-salmonpng.png" alt="" id="salmon">
-            </div>
+      <h4 id="newGameButton">New game!</h4>
+          <img src="assets/images/food-salmonpng.png" alt="" id="salmon">
+      </div>
+    </div>
+
       <script type="text/javascript" src="assets/javascript/game.js"></script>
+
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.8/howler.core.min.js">
 
 
 

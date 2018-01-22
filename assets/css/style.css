@@ -1,8 +1,11 @@
 html {
+
+  overflow: hidden;
+  font-family: 'Alegreya', serif;
   background-image: url(../images/background.jpeg);
   background-size: cover;
+  background-repeat: no-repeat;
   height: 100%;
-  overflow: hidden;
 }
 
 body {
@@ -10,6 +13,8 @@ body {
   width: 100%;
   margin: 0 auto;
   color: gray;
+
+
 
 }
 
@@ -30,10 +35,34 @@ body {
 #container {
   width: 100%;
   max-width: 980px;
-  height: 900px;
+  /* height: 900px; */
   margin: 0 auto;
   position: relative;
 
+}
+
+.game-main {
+  width: 960px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#title {
+  text-align: center;
+  font-size: 48px;
+  color: #242B35;
+}
+
+#inputStyle {
+  width: 50%;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  border-radius: 10%;
+  background: rgba(211,225,230,.5);
+}
+
+#inputStyle h3 {
+  color: #333333;
 }
 
 /* Splash Screen Stuff */
@@ -51,7 +80,7 @@ body {
 }
 
 .startScreenClass h1 {
-  color: orange;
+  color: #26546C;
   font-size: 48px;
   position: relative;
   /* top: 50%;
@@ -69,6 +98,7 @@ body {
 }
 
 .scoreBox {
+  padding: 10px;
   float: right;
   background-color: rgba(23,95,196,.3);
   color: white;
@@ -76,9 +106,10 @@ body {
 }
 
 #guessInput {
-  padding: 20px;
+  padding: 10px;
   border: none;
-  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 10%;
+  background-color: rgba(114,180,190,.5);
 }
 
 
@@ -101,16 +132,23 @@ body {
 }
 
 #newGameButton {
+  opacity: 0;
   background-color: rgb(97, 133, 191);
   color: white;
   position: fixed;
   bottom: 230px;
   right: 220px;
   margin: 0 auto;
-  border-radius: 50%;
+  border-radius: 10%;
   text-transform: capitalize;
-  padding: 10px;
-  opacity: .8;
+  padding: 2px;
+
+}
+
+#newGameButton:hover {
+  opacity: .5;
+  transition: opacity .5s ease-out;
+
 }
 
 /* #scoreCount {
@@ -121,20 +159,10 @@ body {
 
 
 
-.game-main {
-  width: 960px;
-  margin: 0 auto;
-  text-align: center;
-}
 
-#title {
-  text-align: center;
-  font-size: 36px;
-  color: yellow;
-}
 
 #answerSpaces {
-  color: orange;
+  color: #26546C;
   /* font-style: oblique; */
 
 }
