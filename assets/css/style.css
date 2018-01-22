@@ -1,16 +1,49 @@
+html {
+  background-image: url(../images/background.jpeg);
+  background-size: cover;
+  height: 100%;
+  overflow: hidden;
+}
+
 body {
   /* background-color: black; */
-  background-image: url(../images/background.jpeg);
-  background-repeat: no-repeat;
-  background-size: cover;
+
   margin: 0 auto;
   color: gray;
 
 }
 
+.container {
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+  display: inherit;
+
+}
+
+.startScreen {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  height: 2000px;
+  z-index: 10;
+  background-color: red;
+}
+
+.startScreen h1 {
+  color: white;
+  margin: 0 auto;
+}
+
+.hidden {
+  display: none;
+}
+
 #fisherman {
   float: right;
   width: 300px;
+  /* position: fixed;
+  bottom: 300px; */
   opacity: .8;
   /* position: fixed;
   top: 0;
@@ -18,8 +51,12 @@ body {
 }
 
 .scoreCount {
-  margin: 0 auto;
-  width: 960px;
+  /* margin: 0 auto; */
+  /* width: 400px; */
+  color: white;
+  /* position: absolute;
+  top: 10px;
+  left: 30%; */
 }
 
 .game-main {

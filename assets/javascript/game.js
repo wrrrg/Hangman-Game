@@ -9,13 +9,16 @@
 // we also need a win counter, as well as a loop looking for win/lose to trip this
 
 
+// ALL THATS LEFT - put in the fish, get him moving, get the hide/show going
+
+
 var gameOn = false;
 var remainingGuesses = 10;
 var answerKey = '';
 var answerKeyArray = [];
 var guessKey = '';
 var userGuessArray = [];
-var alreadyGuessedArr = ['Already Guessed: '];
+var alreadyGuessedArr = [];
 var victory = false;
 var defeat = false;
 var userString = '';
@@ -78,7 +81,6 @@ function victoryMessages(){
 
 }
 if (!victory && remainingGuesses < 1) {
-  document.getElementById("userMsg").textContent = ("you've lost");
   lossCount += 1;
   updateScore();
 
@@ -94,6 +96,14 @@ function updateScore() {
 function checkVictory() {
   arraysEqual(userGuessArray,answerKeyArray);
   victoryMessages();
+  if(victory){
+    reset();
+    document.getElementById("userMsg").textContent = 'Great Catch! You got one!';
+  };
+  if(defeat){
+    reset();
+    document.getElementById("userMsg").textContent = ("Your fish got away...plenty more in the sea right?");
+  }
 }
 
 
@@ -134,11 +144,13 @@ function guess(key) {
 // };
 
 
+
+
 function resetText () {
   document.getElementById("guessesLeft").textContent = remainingGuesses;
   document.getElementById("guessedAlready").textContent = '';
   var alreadyGuessedArr = '';
-  document.getElementById("userMsg").textContent = ("Good Luck!");
+  document.getElementById("userMsg").textContent = '';
   document.getElementById("guessesLeft").textContent = remainingGuesses;
 };
 
@@ -153,19 +165,53 @@ for (var i = 0; i < arr.length; i++) {
   };
 }};
 
-document.onkeyup = function() {
-  // guessKey = document.getElementById('guessInput').value;
-  guessKey = String.fromCharCode(event.keyCode).toLowerCase();
+
+function guessCheck(){
+    guessKey = String(document.getElementById("guessInput").value);
+    // guessKey = guessKey.string().toLowerCase();
     if(!defeat && !victory){guess(guessKey);
     // document.getElementById('guessInput').value = '';
     alreadyGuessedArr.push(guessKey);
     document.getElementById("guessedAlready").textContent = alreadyGuessedArr.join(' ');
-}};
+  }};
+
+  function blankOutGuess(){
+
+    document.getElementById("guessInput").value = '';
+
+  };
+
+
+
+document.addEventListener('input', function() {
+  guessCheck(this);
+  blankOutGuess();
+});
+
+// document.onChange
+// document.getElementById("guessInput").addEventListener("change", function(){
+//   guessKey = String.fromCharCode(event.keyCode).toLowerCase();
+//     if(!defeat && !victory){
+//       guess(guessKey);
+//     // document.getElementById('guessInput').value = '';
+//       alreadyGuessedArr.push(guessKey);
+//       document.getElementById("guessedAlready").textContent = alreadyGuessedArr.join(' ');
+// }});
 
 document.getElementById("newGameButton").addEventListener("click", function() {
   reset();
 });
 
+// document.getElementById("guessInput").value;
+
+// document.onkeyup = function() {
+//   // guessKey = document.getElementById('guessInput').value;
+//   guessKey = String.fromCharCode(event.keyCode).toLowerCase();
+//     if(!defeat && !victory){guess(guessKey);
+//     // document.getElementById('guessInput').value = '';
+//     alreadyGuessedArr.push(guessKey);
+//     document.getElementById("guessedAlready").textContent = alreadyGuessedArr.join(' ');
+// }};
 
 
 
@@ -173,7 +219,7 @@ function init(){
     victory = false;
     defeat = false;
     remainingGuesses = 10;
-    alreadyGuessedArr = ['Already Guessed: '];
+    alreadyGuessedArr = [];
     // resetVars();
     pickAnswer();
     makeAnswerKey(answerKey);
