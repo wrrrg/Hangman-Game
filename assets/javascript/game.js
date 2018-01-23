@@ -195,10 +195,10 @@ function guessCheck(){
 
 
 
-document.addEventListener('input', function() {
-  guessCheck(this);
-  blankOutGuess();
-});
+// document.addEventListener('input', function() {
+//   guessCheck(this);
+//   blankOutGuess();
+// });
 
 // function startGame(){
 //   gameOn = true;
@@ -257,18 +257,34 @@ function showMainScreen(){
 function moveFish(){
   element = document.getElementById("Salmon");
   element.style.left += 1
-}
+};
 
 
 // Start the game
-document.addEventListener("keyup", ev => {
+document.onkeyup = function() {
   if (!gameStarted) {
       gameStarted = true;
       hideTitleScreen();
       showMainScreen();
       init();
-  }
-});
+  } else if (gameStarted) {
+      guessKey = String.fromCharCode(event.keyCode).toLowerCase();
+        if(!defeat && !victory){guess(guessKey);
+        // document.getElementById('guessInput').value = '';
+        alreadyGuessedArr.push(guessKey);
+        document.getElementById("guessedAlready").textContent = alreadyGuessedArr.join(' ');
+    }
+   };
+  };
+
+  // document.onkeyup = function() {
+  //   // guessKey = document.getElementById('guessInput').value;
+  //   guessKey = String.fromCharCode(event.keyCode).toLowerCase();
+  //     if(!defeat && !victory){guess(guessKey);
+  //     // document.getElementById('guessInput').value = '';
+  //     alreadyGuessedArr.push(guessKey);
+  //     document.getElementById("guessedAlready").textContent = alreadyGuessedArr.join(' ');
+  // }};
 
 
 
